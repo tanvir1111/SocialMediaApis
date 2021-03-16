@@ -1,4 +1,4 @@
-package com.example.youtubeapi.Adapters;
+package com.example.socialmediaApis.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.youtubeapi.DataModels.VideoDetailsDataModel;
-import com.example.youtubeapi.R;
-import com.example.youtubeapi.ViewHolders.VideoDetailViewHolder;
+import com.example.socialmediaApis.DataModels.VideoDetailsDataModel;
+import com.example.socialmediaApis.R;
+import com.example.socialmediaApis.ViewHolders.VideoDetailViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

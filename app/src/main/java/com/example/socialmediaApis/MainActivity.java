@@ -1,4 +1,4 @@
-package com.example.youtubeapi;
+package com.example.socialmediaApis;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.youtubeapi;
+package com.example.socialmediaApis;
 
 import android.content.Context;
 

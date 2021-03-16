@@ -1,4 +1,4 @@
-package com.example.youtubeapi.ViewHolders;
+package com.example.socialmediaApis.ViewHolders;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.youtubeapi.R;
+import com.example.socialmediaApis.R;
 
 public class VideoDetailViewHolder extends RecyclerView.ViewHolder {
    public TextView views,likes,title;

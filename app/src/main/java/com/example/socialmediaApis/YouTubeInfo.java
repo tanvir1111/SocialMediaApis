@@ -1,25 +1,23 @@
-package com.example.youtubeapi;
+package com.example.socialmediaApis;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.youtubeapi.Adapters.VideoDetailAdapters;
-import com.example.youtubeapi.DataModels.VideoDetailsDataModel;
+import com.example.socialmediaApis.Adapters.VideoDetailAdapters;
+import com.example.socialmediaApis.DataModels.VideoDetailsDataModel;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class YouTubeInfo extends AppCompatActivity {

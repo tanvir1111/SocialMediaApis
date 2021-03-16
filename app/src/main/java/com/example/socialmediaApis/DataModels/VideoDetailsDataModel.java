@@ -1,4 +1,4 @@
-package com.example.youtubeapi.DataModels;
+package com.example.socialmediaApis.DataModels;
 
 public class VideoDetailsDataModel {
     private String thumbURL;
