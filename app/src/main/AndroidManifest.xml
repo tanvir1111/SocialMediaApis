@@ -8,8 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.YoutubeApi">
         <activity android:name="com.example.socialmediaApis.YouTubeInfo"></activity>
+        <activity android:name="com.example.socialmediaApis.TwitterInfo"></activity>
         <activity android:name="com.example.socialmediaApis.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -14,12 +14,15 @@ public class HttpHandler {
     public HttpHandler(){
 
     }
-    public String makeServiceCall(String reqUrl){
+    public String makeServiceCall(String reqUrl, String socialMedia){
         String response=null;
         try {
             URL url=new URL(reqUrl);
             HttpURLConnection connection= (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
+            if(socialMedia.equals("twitter")) {
+                connection.setRequestProperty("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAE5cNgEAAAAABrBpiLV5aXk1nFMCl3i5Ro8ptsA%3D9KHayZbLfOHVakpFPV1nxwt4U3JfVY6vNo5opretW6frHpchjU");
+            }
             InputStream inputStream=new BufferedInputStream(connection.getInputStream());
             response= convertStreamToString(inputStream);
 

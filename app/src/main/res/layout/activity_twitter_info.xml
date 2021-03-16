@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TwitterInfo">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/twitterThumbnailCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="100dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/twitterIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/twitterScreenName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/twitterFollowerLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toTopOf="@+id/twitterThumbnailCard" />
+
+    <TextView
+        android:id="@+id/twitterFollowerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Followers: "
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/twitterFollowingLabel"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/twitterScreenName" />
+
+    <TextView
+        android:id="@+id/twitterFollowers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#2196F3"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterFollowerLabel"
+        app:layout_constraintEnd_toEndOf="@+id/twitterScreenName"
+        app:layout_constraintStart_toEndOf="@+id/twitterFollowerLabel"
+        app:layout_constraintTop_toTopOf="@+id/twitterFollowerLabel" />
+
+    <TextView
+        android:id="@+id/twitterFollowingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Following: "
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/twitterStatusLabel"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/twitterFollowerLabel" />
+
+    <TextView
+        android:id="@+id/twitterFollowing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FF5722"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterFollowingLabel"
+        app:layout_constraintEnd_toEndOf="@+id/twitterFollowers"
+        app:layout_constraintStart_toEndOf="@+id/twitterFollowerLabel"
+        app:layout_constraintTop_toTopOf="@+id/twitterFollowingLabel" />
+
+    <TextView
+        android:id="@+id/twitterStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Tweets: "
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterThumbnailCard"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/twitterFollowingLabel" />
+
+    <TextView
+        android:id="@+id/twitterStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#009688"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterStatusLabel"
+        app:layout_constraintEnd_toEndOf="@+id/twitterFollowers"
+        app:layout_constraintStart_toEndOf="@+id/twitterFollowerLabel"
+        app:layout_constraintTop_toTopOf="@+id/twitterStatusLabel" />
+
+    <TextView
+        android:id="@+id/twitterLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Location: "
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterThumbnailCard"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/twitterStatusLabel" />
+
+    <TextView
+        android:id="@+id/twitterLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterLocationLabel"
+        app:layout_constraintEnd_toEndOf="@+id/twitterFollowers"
+        app:layout_constraintStart_toEndOf="@+id/twitterFollowerLabel"
+        app:layout_constraintTop_toTopOf="@+id/twitterLocationLabel" />
+
+    <TextView
+        android:id="@+id/twitterDescriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/twitterThumbnailCard"
+        app:layout_constraintStart_toEndOf="@+id/twitterThumbnailCard"
+        app:layout_constraintStart_toStartOf="@+id/twitterThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/twitterLocationLabel"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <View
+        android:id="@+id/rule"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="32dp"
+        android:background="#22000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twitterThumbnailCard" />
+
+    <TextView
+        android:id="@+id/twitterDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:lines="4"
+        android:maxLines="4"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/twitterLocation"
+        app:layout_constraintStart_toStartOf="@+id/twitterDescriptionLabel"
+        app:layout_constraintTop_toBottomOf="@+id/twitterDescriptionLabel" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/twitterTweets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/twitterDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twitterDescription" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

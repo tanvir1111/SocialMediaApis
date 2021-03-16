@@ -54,12 +54,12 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
+            android:id="@+id/twitter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/icon_awesome_twitter_square"
 
-            />
+            android:src="@drawable/icon_awesome_twitter_square" />
 
     </androidx.cardview.widget.CardView>
 

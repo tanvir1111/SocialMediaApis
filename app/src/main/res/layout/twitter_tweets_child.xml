@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/rule2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="#22000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetLikeIcon" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/child_child_twitterThumbnailCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/child_tweetIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/icon_awesome_twitter_square" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/child_tweetIDLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Tweet ID:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/child_child_twitterThumbnailCard"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/child_tweetID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="casual"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/child_tweetDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="casual"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetID" />
+
+    <TextView
+        android:id="@+id/child_tweet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="casual"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetDate" />
+
+    <TextView
+        android:id="@+id/child_tweetSource"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="casual"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweet" />
+
+    <TextView
+        android:id="@+id/child_tweetDateLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Date:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintStart_toStartOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetIDLabel" />
+
+    <TextView
+        android:id="@+id/child_tweetLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Tweet:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetDateLabel" />
+
+    <TextView
+        android:id="@+id/child_tweetSourceLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Source:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/child_tweetIDLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/child_tweetIDLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetLabel" />
+
+    <TextView
+        android:id="@+id/child_tweetLikes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="monospace"
+        android:text="0"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetLikeIcon"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        tools:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/child_tweetRetweets"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="monospace"
+        android:text="0"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetRetweetIcon"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        tools:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/child_tweetReplies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="monospace"
+        android:text="0"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetReplyIcon"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        tools:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/child_tweetQuotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="monospace"
+        android:text="0"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetQuoteIcon"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        tools:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/child_tweetLikeIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="@+id/child_tweetSourceLabel"
+        app:layout_constraintTop_toBottomOf="@+id/child_tweetSource"
+        app:srcCompat="@drawable/like" />
+
+    <ImageView
+        android:id="@+id/child_tweetRetweetIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetLikes"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        app:srcCompat="@drawable/retweet" />
+
+    <ImageView
+        android:id="@+id/child_tweetReplyIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetRetweets"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        app:srcCompat="@drawable/reply" />
+
+    <ImageView
+        android:id="@+id/child_tweetQuoteIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/child_tweetReplies"
+        app:layout_constraintTop_toTopOf="@+id/child_tweetLikeIcon"
+        app:srcCompat="@drawable/quote" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

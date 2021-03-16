@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,7 +63,8 @@ public class YouTubeInfo extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             HttpHandler handler=new HttpHandler();
-            String jsonStr=handler.makeServiceCall(channelInfoUrl);
+            String jsonStr=handler.makeServiceCall(channelInfoUrl,"youtube");
+            Log.d("Response",""+jsonStr);
 
             if(jsonStr != null){
                 try {
@@ -93,6 +95,7 @@ public class YouTubeInfo extends AppCompatActivity {
 
         }
     }
+
     private class GetVideoIDList extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
@@ -103,7 +106,7 @@ public class YouTubeInfo extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             HttpHandler handler=new HttpHandler();
-            String jsonStr=handler.makeServiceCall(videoListUrl);
+            String jsonStr=handler.makeServiceCall(videoListUrl,"youtube");
 
             if(jsonStr != null){
                 try {
@@ -142,7 +145,7 @@ public class YouTubeInfo extends AppCompatActivity {
             HttpHandler handler=new HttpHandler();
             for (int i=0;i<videoIDs.size();i++) {
                 String videoURL="https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id="+videoIDs.get(i)+"&key="+API_KEY;
-                String jsonStr = handler.makeServiceCall(videoURL);
+                String jsonStr = handler.makeServiceCall(videoURL,"youtube");
 
                 if (jsonStr != null) {
                     try {
