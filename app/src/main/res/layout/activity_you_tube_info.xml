@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".YouTubeInfo">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/channelThumbnailCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="100dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/channelThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/channelTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="channel Name"
+        app:layout_constraintBottom_toTopOf="@+id/subscribersLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/channelThumbnailCard"
+        app:layout_constraintTop_toTopOf="@+id/channelThumbnailCard" />
+
+    <TextView
+        android:id="@+id/subscribersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Subscribers: "
+        app:layout_constraintBottom_toTopOf="@+id/totalViewLabel"
+        app:layout_constraintStart_toEndOf="@+id/channelThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/channelTitle" />
+
+    <TextView
+        android:id="@+id/subscribers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2222222"
+        app:layout_constraintBottom_toBottomOf="@+id/subscribersLabel"
+        app:layout_constraintEnd_toEndOf="@+id/channelTitle"
+        app:layout_constraintStart_toEndOf="@+id/subscribersLabel"
+        app:layout_constraintTop_toTopOf="@+id/subscribersLabel" />
+
+    <TextView
+        android:id="@+id/totalViewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Total Views: "
+        app:layout_constraintBottom_toTopOf="@+id/totalVideosLabel"
+        app:layout_constraintStart_toEndOf="@+id/channelThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/subscribersLabel" />
+
+    <TextView
+        android:id="@+id/totalViews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2222222"
+        app:layout_constraintBottom_toBottomOf="@+id/totalViewLabel"
+        app:layout_constraintEnd_toEndOf="@+id/subscribers"
+        app:layout_constraintStart_toEndOf="@+id/subscribersLabel"
+        app:layout_constraintTop_toTopOf="@+id/totalViewLabel" />
+
+    <TextView
+        android:id="@+id/totalVideosLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Total Videos: "
+        app:layout_constraintBottom_toBottomOf="@+id/channelThumbnailCard"
+        app:layout_constraintStart_toEndOf="@+id/channelThumbnailCard"
+        app:layout_constraintTop_toBottomOf="@+id/totalViewLabel" />
+
+    <TextView
+        android:id="@+id/totalVideos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2222222"
+        app:layout_constraintBottom_toBottomOf="@+id/totalVideosLabel"
+        app:layout_constraintEnd_toEndOf="@+id/subscribers"
+        app:layout_constraintStart_toEndOf="@+id/subscribersLabel"
+        app:layout_constraintTop_toTopOf="@+id/totalVideosLabel" />
+
+    <View
+        android:id="@+id/rule"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="#22000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/channelThumbnailCard" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/videosRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rule"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
