@@ -3,9 +3,11 @@ package com.example.socialmediaApis;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,16 +23,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class YouTubeInfo extends AppCompatActivity {
+public class YouTubeInfoActivity extends AppCompatActivity {
     TextView subscribers,channelTitle,totalViews,totalVideos;
     ImageView channelThumbnail;
     RecyclerView videoListRecycler;
     ArrayList<String> videoIDs;
+    SwipeRefreshLayout swipeRefreshLayout;
     ArrayList<VideoDetailsDataModel> videoDetailsList;
-    public static String API_KEY="AIzaSyD9kSG4AvbxT0YDqC1ZypnJHZSA3G4HP4I";
+    public static String API_KEY="AIzaSyAVyMqvOsX7FZg-wRMw_Hrl9Q3Wdcq-Glk";
     String channelID;
     public  String channelInfoUrl;
     public String videoListUrl;
+
 
     String title,subscriberCount,totalViewsCount,totalVideosCount,channelThumbnailUrl;
     @Override
@@ -44,12 +48,28 @@ public class YouTubeInfo extends AppCompatActivity {
         totalVideos=findViewById(R.id.totalVideos);
         channelThumbnail=findViewById(R.id.channelThumbnail);
         videoListRecycler=findViewById(R.id.videosRecyclerView);
+        swipeRefreshLayout=findViewById(R.id.ytSwipeRefresh);
         channelID= getIntent().getStringExtra("channelID");
         channelInfoUrl="https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id="+channelID+"&key="+API_KEY;
         videoListUrl="https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId="+channelID+"&maxResults=10&order=viewCount&key="+API_KEY;
         videoIDs=new ArrayList<>();
         videoDetailsList=new ArrayList<>();
-        new GetChannelData().execute();
+            new GetChannelData().execute();
+
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    new GetChannelData().execute();
+                    Handler handler=new Handler();
+                   handler.postDelayed(new Runnable() {
+                       @Override
+                       public void run() {
+                           swipeRefreshLayout.setRefreshing(false);
+                       }
+                   },1000);
+
+                }
+            });
 
 
     }
@@ -57,7 +77,7 @@ public class YouTubeInfo extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(YouTubeInfo.this, "getting Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(YouTubeInfoActivity.this, "getting Data", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -113,6 +133,7 @@ public class YouTubeInfo extends AppCompatActivity {
 
                     JSONObject jsonObject=new JSONObject(jsonStr);
                     JSONArray itemsArray=jsonObject.getJSONArray("items");
+                    videoIDs.clear();
                     for(int i=0;i<itemsArray.length();i++){
                         String videoID=itemsArray.getJSONObject(i).getJSONObject("id").getString("videoId");
                         videoIDs.add(videoID);
@@ -143,12 +164,14 @@ public class YouTubeInfo extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             HttpHandler handler=new HttpHandler();
+            videoDetailsList.clear();
             for (int i=0;i<videoIDs.size();i++) {
                 String videoURL="https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id="+videoIDs.get(i)+"&key="+API_KEY;
                 String jsonStr = handler.makeServiceCall(videoURL,"youtube");
 
                 if (jsonStr != null) {
                     try {
+
 
                         JSONObject jsonObject = new JSONObject(jsonStr);
                         JSONObject snippet=jsonObject.getJSONArray("items").getJSONObject(0).getJSONObject("snippet");
@@ -176,9 +199,9 @@ public class YouTubeInfo extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            videoListRecycler.setLayoutManager(new LinearLayoutManager(YouTubeInfo.this,RecyclerView.VERTICAL,false));
+            videoListRecycler.setLayoutManager(new LinearLayoutManager(YouTubeInfoActivity.this,RecyclerView.VERTICAL,false));
             videoListRecycler.setAdapter(new VideoDetailAdapters(getApplicationContext(),videoDetailsList));
-           
+
 
         }
     }

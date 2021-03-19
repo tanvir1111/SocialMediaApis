@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.socialmediaApis.Adapters.TwitterTweetAdapter;
 import com.example.socialmediaApis.Adapters.VideoDetailAdapters;
@@ -36,17 +38,18 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class TwitterInfo extends AppCompatActivity {
+public class TwitterInfoActivity extends AppCompatActivity {
 
     ImageView twitterImageView;
     TextView twitterPageNameView, twitterFollowersView, twitterFollowingView, twitterStatusView, twitterLocationView, twitterDescriptionView;
     String twitterImageUrl, twitterPageName, twitterFollowers, twitterFollowing, twitterStatus, twitterLocation;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     RecyclerView recyclerView;
     ArrayList<TwitterTweetDataModel> twitterTweetDataModels;
 
     public String twitterUrl = "https://api.twitter.com/1.1/users/show.json?screen_name=mkbhd";
-    public String tweetUrl = "https://api.twitter.com/2/users/29873662/tweets?max_results=100&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,public_metrics,possibly_sensitive,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,referenced_tweets.id,author_id&media.fields=duration_ms,height,media_key,preview_image_url,public_metrics,type,url,width";
+    public String tweetUrl = "https://api.twitter.com/2/users/29873662/tweets?max_results=10&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,public_metrics,possibly_sensitive,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,referenced_tweets.id,author_id&media.fields=duration_ms,height,media_key,preview_image_url,public_metrics,type,url,width";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +65,29 @@ public class TwitterInfo extends AppCompatActivity {
         twitterLocationView = findViewById(R.id.twitterLocation);
         twitterDescriptionView = findViewById(R.id.twitterDescription);
         recyclerView = findViewById(R.id.twitterTweets);
+        swipeRefreshLayout=findViewById(R.id.twitterSwipeRefresh);
 
         twitterTweetDataModels = new ArrayList<>();
 
         new tweetData().execute();
         new pageData().execute();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        new pageData().execute();
+                        new tweetData().execute();
+                        Handler handler=new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                               swipeRefreshLayout.setRefreshing(false);
+                            }
+                        },1000);
+
+                    }
+                });
 
 
 
@@ -105,11 +126,7 @@ public class TwitterInfo extends AppCompatActivity {
                 }
 
                 Log.d("Response",twitterImageUrl);
-                twitterPageNameView.setText(twitterPageName);
-                twitterFollowersView.setText(twitterFollowers);
-                twitterFollowingView.setText(twitterFollowing);
-                twitterStatusView.setText(twitterStatus);
-                twitterLocationView.setText(twitterLocation);
+
 
             }
 
@@ -121,8 +138,11 @@ public class TwitterInfo extends AppCompatActivity {
             super.onPostExecute(aVoid);
 
             new ImageDownloader(twitterImageView).execute(twitterImageUrl);
-
-
+            twitterPageNameView.setText(twitterPageName);
+            twitterFollowersView.setText(twitterFollowers);
+            twitterFollowingView.setText(twitterFollowing);
+            twitterStatusView.setText(twitterStatus);
+            twitterLocationView.setText(twitterLocation);
 
         }
     }
@@ -148,6 +168,7 @@ public class TwitterInfo extends AppCompatActivity {
                     JSONObject responseData=new JSONObject(jsonStr);
 
                     String id="",date="",tweet="",source="",likes="",retweets="",replies="",quotes="";
+                    twitterTweetDataModels.clear();
 
                     for(int i=0;i<responseData.getJSONArray("data").length();i++) {
                         JSONObject data = responseData.getJSONArray("data").getJSONObject(i);
@@ -236,7 +257,7 @@ public class TwitterInfo extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            Log.d("Response","DataModelSize: "+twitterTweetDataModels.size());
+            Log.d("Response","DataModelSize: "+twitterTweetDataModels);
 
 
             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));

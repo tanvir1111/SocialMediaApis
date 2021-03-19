@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.YoutubeApi">
-        <activity android:name="com.example.socialmediaApis.YouTubeInfo"></activity>
-        <activity android:name="com.example.socialmediaApis.TwitterInfo"></activity>
+        <activity android:name="com.example.socialmediaApis.YouTubeInfoActivity"></activity>
+        <activity android:name="com.example.socialmediaApis.TwitterInfoActivity"></activity>
         <activity android:name="com.example.socialmediaApis.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

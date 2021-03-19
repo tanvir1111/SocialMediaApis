@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         youtube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this,YouTubeInfo.class);
+                Intent intent =new Intent(MainActivity.this, YouTubeInfoActivity.class);
                 intent.putExtra("channelID",youtube.getTag().toString());
                 startActivity(intent);
             }
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this,TwitterInfo.class);
+                Intent intent =new Intent(MainActivity.this, TwitterInfoActivity.class);
                 startActivity(intent);
             }
         });
